@@ -6,11 +6,23 @@ class Product{
   String create_at;
 
   Product({this.id, this.name, this.price, this.image, this.create_at});
+  Map toJson() => {
+    'id': id,
+    'name': name,
+    'price': price,
+    'image': image,
+    'create_at': create_at,
+  };
 
+
+  @override
+  String toString() {
+    return '{id: $id, name: $name, price: $price, image: $image, create_at: $create_at}';
+  }
 
   List<Product> initData(){
     List<Product> list = List<Product>();
-    list.add(Product(id:"1", name:"Iphone 6", price:"400000", image:"https://sudospaces.com/mobilecity-vn/images/2019/01/iphone-6s-pink.jpg", create_at:"10/7/2020"));
+    list.add(Product(id:"1", name:"Iphone 6 ", price:"400000", image:"https://sudospaces.com/mobilecity-vn/images/2019/01/iphone-6s-pink.jpg", create_at:"10/7/2020"));
     list.add(Product(id:"2", name:"SamSung", price:"750000", image:"https://images.samsung.com/is/image/samsung/assets/vn/p6_gro1/p6_initial_home/720x1080.jpg", create_at:"18/8/2020"));
     list.add(Product(id:"3", name:"Iphone 6s", price:"500000", image:"https://sudospaces.com/mobilecity-vn/images/2019/01/iphone-6s-pink.jpg", create_at:"1/5/2020"));
     list.add(Product(id:"4", name:"Iphone 8", price:"1100000", image:"https://cdn.tgdd.vn/Products/Images/42/114110/iphone-8-plus-hh-600x600-600x600.jpg", create_at:"10/7/2020"));

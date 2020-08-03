@@ -1,11 +1,14 @@
 import 'package:custom_listview/custom_widget/normal_button.dart';
 import 'package:custom_listview/models/product.dart';
 import 'package:custom_listview/views/gridview_base.dart';
+import 'package:custom_listview/views/gridview_spacing.dart';
 import 'package:custom_listview/views/listview_base.dart';
 import 'package:custom_listview/views/listview_group_by_header.dart';
 import 'package:custom_listview/views/listview_horizontal.dart';
 import 'package:custom_listview/views/listview_loadmore.dart';
 import 'package:flutter/material.dart';
+
+import 'custom_widget/appbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,10 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(widget.title,style: TextStyle(fontSize: 17),),
-      ),
+      appBar: appBarMain(context,widget.title),
       body: Center(
         child: SingleChildScrollView (
           child: Column(
@@ -57,6 +57,9 @@ class _MyHomePageState extends State<MyHomePage> {
               },),
               NormalButton(title:'GridView Base',onPress: (){
                 gotoScreen(context,GridViewBase());
+              },),
+              NormalButton(title:'GridView with spacing',onPress: (){
+                gotoScreen(context,GridViewSpacing());
               },),
               NormalButton(title:'ListView with horizontal',onPress: (){
                 gotoScreen(context,ListViewHorizontal());
