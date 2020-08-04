@@ -16,14 +16,15 @@ class ListViewGroupByHeader extends StatefulWidget {
 class _ListViewGroupByHeaderState extends State<ListViewGroupByHeader> {
   List<Product> data = new Product().initData();
   List data1 = [
-    {'topic': 'ListView.builder', 'group': 'ListView Type'},
-    {'topic': 'Introduction', 'group': 'ListView Type'},
-    {'topic': 'StatefulWidget', 'group': 'Type of Widget'},
-    {'topic': 'ListView', 'group': 'ListView Type'},
-    {'topic': 'ListView.separated', 'group': 'ListView Type'},
-    {'topic': 'ListView.custom', 'group': 'ListView Type'},
-    {'topic': 'StatelessWidget', 'group': 'Type of Widget'},
+    {'name': 'SamSung', 'group': 'Team A','image': 'https://sudospaces.com/mobilecity-vn/images/2019/01/iphone-6s-pink.jpg','create_at': '1/5/2020'},
+    {'name': 'Iphone 3', 'group': 'Team A','image': 'https://cdn.tgdd.vn/Products/Images/42/114110/iphone-8-plus-hh-600x600-600x600.jpg','create_at': '1/5/2020'},
+    {'name': 'Oppo', 'group': 'Team A','image': 'https://cdn.tgdd.vn/Products/Images/42/111107/samsung-galaxy-a7-2018-blue-600x600.jpg','create_at': '2/5/2020'},
+    {'name': 'SamSung', 'group': 'Team A','image': 'https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/1861322683.jpeg','create_at': '2/5/2020'},
+    {'name': 'SamSung', 'group': 'Team A','image': 'https://sudospaces.com/mobilecity-vn/images/2019/01/iphone-6s-pink.jpg','create_at': '7/7/2020'},
+    {'name': 'SamSung', 'group': 'Team A','image': 'https://sudospaces.com/mobilecity-vn/images/2019/01/iphone-6s-pink.jpg','create_at': '9/5/2020'},
+
   ];
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarMain(context,'ListView Group by header'),
@@ -33,17 +34,18 @@ class _ListViewGroupByHeaderState extends State<ListViewGroupByHeader> {
     );
   }
   GroupedListView list(){
-    String jsonTags = jsonEncode(data);
-    print('data '+data.toString());
-    List _elements =[jsonTags];
+    List notifications = [];
+    print('data1 '+data1.toString());
     print('---------------------------------------');
     print('---------------------------------------');
     print('---------------------------------------');
-    print('data11 '+data1.toString());
+    List data2 =data.toList();
+    notifications.addAll(data);
+    print('data2 '+data2.toString());
     return GroupedListView<dynamic, String>(
-      groupBy: (element) => element(Product)['create_at'],
+      groupBy: (element) => element[['create_at']],
       elements: data,
-      order: GroupedListOrder.DESC,
+     // order: GroupedListOrder.DESC,
       useStickyGroupSeparators: true,
       groupSeparatorBuilder: (String value) => Padding(
         padding: const EdgeInsets.all(8.0),
@@ -54,7 +56,7 @@ class _ListViewGroupByHeaderState extends State<ListViewGroupByHeader> {
         ),
       ),
       itemBuilder: (context,item){
-       return Text('name');
+       return Text(item['name']);
       },
 
     );

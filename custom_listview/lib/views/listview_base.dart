@@ -25,6 +25,8 @@ class _ListViewBaseState extends State<ListViewBase> {
     return ListView.separated(// or separated // builder
       separatorBuilder: (context, index) => Divider(
         color: Colors.grey,height: 1,
+        indent: 10.0,// padding left
+        endIndent: 20,// padding right
       ),
       itemCount: data.length,
       itemBuilder: (context,index){
